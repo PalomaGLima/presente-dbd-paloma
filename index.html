@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Presente no Armario</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="locker-scene" data-code="COLOQUE-O-CODIGO-AQUI">
+      <img
+        class="scene-image"
+        src="assets/dbd-locker-background.webp"
+        alt="Cena de Dead by Daylight com armarios vermelhos em um mapa nevado"
+      />
+
+      <button
+        class="locker-hotspot"
+        id="open-locker"
+        type="button"
+        aria-label="Abrir a maçaneta marcada e revelar presente"
+      ></button>
+
+      <section class="gift-modal" id="gift-modal" aria-labelledby="gift-title" hidden>
+        <div class="gift-card locked">
+          <form class="password-gate" id="password-gate">
+            <div class="password-row">
+              <input
+                id="password-input"
+                type="text"
+                aria-label="Senha do armario"
+                autocomplete="off"
+                placeholder="Digite a senha"
+              />
+              <button class="primary-action" type="submit">
+                Abrir
+              </button>
+            </div>
+            <p class="sr-only" id="password-feedback" aria-live="polite"></p>
+          </form>
+
+          <div class="gift-content" id="gift-content" hidden>
+            <img class="tally-logo" src="assets/dbd-tally-marks.png" alt="" />
+            <p class="survivor-note">O armario abriu</p>
+            <h1 id="gift-title">Seu presente escapou do nevoeiro</h1>
+            <p class="message">
+              Feliz aniversario. Antes de abrir o presente, diga quem estava
+              escondido no nevoeiro.
+            </p>
+
+            <div class="code-box">
+              <span class="item-found-label">Item encontrado</span>
+              <span class="code-label">Codigo Steam</span>
+              <strong id="steam-code" class="code-value" aria-live="polite">
+                ?????-?????-?????
+              </strong>
+            </div>
+
+            <div class="actions">
+              <button class="primary-action" id="copy-code" type="button" disabled>
+                Copiar codigo
+              </button>
+              <button class="ghost-action" id="close-modal" type="button">
+                Fechar armario
+              </button>
+            </div>
+
+            <p class="final-note" id="final-note" aria-live="polite">
+              A fogueira esta acesa. Boa partida.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

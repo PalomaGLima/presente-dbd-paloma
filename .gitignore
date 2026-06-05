@@ -1,0 +1,5 @@
+.netlify/
+.edge-profile*/
+.chrome-profile*/
+*-check.png
+.preview-*.html
