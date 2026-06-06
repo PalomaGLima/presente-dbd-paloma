@@ -3,6 +3,8 @@ const introOverlay = document.querySelector("#intro-video");
 const introPlayer = document.querySelector("#intro-player");
 const wrongPasswordOverlay = document.querySelector("#wrong-password-video");
 const wrongPasswordPlayer = document.querySelector("#wrong-password-player");
+const correctPasswordOverlay = document.querySelector("#correct-password-video");
+const correctPasswordPlayer = document.querySelector("#correct-password-player");
 const menuScreen = document.querySelector("#dbd-menu");
 const playMenuButton = document.querySelector("#play-menu");
 const killerMenuButton = document.querySelector("#killer-menu");
@@ -83,6 +85,20 @@ function showWrongPasswordVideo(focusTarget) {
   wrongPasswordPlayer.muted = false;
   wrongPasswordPlayer.volume = 1;
   wrongPasswordPlayer.play().catch(hideWrongPasswordVideo);
+}
+
+function hideCorrectPasswordVideo() {
+  correctPasswordPlayer.pause();
+  correctPasswordOverlay.hidden = true;
+  showCongratsStep();
+}
+
+function showCorrectPasswordVideo() {
+  correctPasswordOverlay.hidden = false;
+  correctPasswordPlayer.currentTime = 0;
+  correctPasswordPlayer.muted = false;
+  correctPasswordPlayer.volume = 0.35;
+  correctPasswordPlayer.play().catch(hideCorrectPasswordVideo);
 }
 
 function toggleKillerChoice() {
@@ -181,7 +197,7 @@ passwordGate.addEventListener("submit", (event) => {
   event.preventDefault();
 
   if (normalizePassword(passwordInput.value) === giftPassword) {
-    showCongratsStep();
+    showCorrectPasswordVideo();
     return;
   }
 
@@ -207,6 +223,8 @@ finalPasswordGate.addEventListener("submit", (event) => {
 
 wrongPasswordPlayer.addEventListener("ended", hideWrongPasswordVideo);
 wrongPasswordPlayer.addEventListener("error", hideWrongPasswordVideo);
+correctPasswordPlayer.addEventListener("ended", hideCorrectPasswordVideo);
+correctPasswordPlayer.addEventListener("error", hideCorrectPasswordVideo);
 
 modal.addEventListener("click", (event) => {
   if (event.target === modal) {
