@@ -1,6 +1,8 @@
 const scene = document.querySelector(".locker-scene");
 const introOverlay = document.querySelector("#intro-video");
 const introPlayer = document.querySelector("#intro-player");
+const wrongPasswordOverlay = document.querySelector("#wrong-password-video");
+const wrongPasswordPlayer = document.querySelector("#wrong-password-player");
 const menuScreen = document.querySelector("#dbd-menu");
 const playMenuButton = document.querySelector("#play-menu");
 const killerMenuButton = document.querySelector("#killer-menu");
@@ -30,6 +32,7 @@ const bonusCode = scene.dataset.bonusCode;
 const giftPassword = "ghost face";
 const finalGiftPassword = "tiffany";
 let introHidden = false;
+let wrongPasswordFocusTarget = null;
 
 function hideIntro() {
   if (introHidden) {
@@ -62,6 +65,24 @@ playIntroWithAudio().catch(() => {
 
 function normalizePassword(value) {
   return value.trim().toLowerCase().replace(/\s+/g, " ");
+}
+
+function hideWrongPasswordVideo() {
+  wrongPasswordPlayer.pause();
+  wrongPasswordOverlay.hidden = true;
+
+  if (wrongPasswordFocusTarget) {
+    wrongPasswordFocusTarget.focus();
+  }
+}
+
+function showWrongPasswordVideo(focusTarget) {
+  wrongPasswordFocusTarget = focusTarget;
+  wrongPasswordOverlay.hidden = false;
+  wrongPasswordPlayer.currentTime = 0;
+  wrongPasswordPlayer.muted = false;
+  wrongPasswordPlayer.volume = 1;
+  wrongPasswordPlayer.play().catch(hideWrongPasswordVideo);
 }
 
 function toggleKillerChoice() {
@@ -167,7 +188,7 @@ passwordGate.addEventListener("submit", (event) => {
   passwordInput.value = "";
   passwordInput.placeholder = "Senha errada";
   passwordFeedback.textContent = "Senha errada.";
-  passwordInput.focus();
+  showWrongPasswordVideo(passwordInput);
 });
 
 finalPasswordGate.addEventListener("submit", (event) => {
@@ -181,8 +202,11 @@ finalPasswordGate.addEventListener("submit", (event) => {
   finalPasswordInput.value = "";
   finalPasswordInput.placeholder = "Senha errada";
   finalPasswordFeedback.textContent = "Senha errada.";
-  finalPasswordInput.focus();
+  showWrongPasswordVideo(finalPasswordInput);
 });
+
+wrongPasswordPlayer.addEventListener("ended", hideWrongPasswordVideo);
+wrongPasswordPlayer.addEventListener("error", hideWrongPasswordVideo);
 
 modal.addEventListener("click", (event) => {
   if (event.target === modal) {
