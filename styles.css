@@ -449,8 +449,7 @@ button {
 .gift-card.locked {
   width: min(860px, calc(100vw - 36px));
   min-height: min(680px, calc(100svh - 36px));
-  display: grid;
-  place-items: center;
+  display: block;
   padding: clamp(34px, 5vw, 74px);
   border: 0;
   background:
@@ -544,8 +543,11 @@ h1 {
 }
 
 #password-gate {
+  position: absolute;
+  left: 50%;
+  top: 50%;
   width: min(680px, 82%);
-  transform: translateY(clamp(92px, 11vw, 132px));
+  transform: translate(-50%, -50%);
 }
 
 #final-password-gate {
@@ -966,7 +968,7 @@ h1 {
 
   #password-gate {
     width: min(430px, 86%);
-    transform: translateY(clamp(70px, 16vw, 104px));
+    transform: translate(-50%, -50%);
   }
 
   #final-password-gate {
