@@ -149,43 +149,12 @@ button {
 .player-strip {
   position: absolute;
   z-index: 1;
-  top: 22px;
-  right: clamp(18px, 4vw, 54px);
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  color: rgba(241, 232, 220, 0.9);
-  font-size: clamp(0.78rem, 1.4vw, 0.95rem);
-  font-weight: 800;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-}
-
-.currency::before {
-  content: "";
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin-right: 6px;
-  border-radius: 999px;
-  background: #f0b51f;
-  box-shadow: 0 0 12px rgba(240, 181, 31, 0.72);
-  vertical-align: -1px;
-}
-
-.currency.shard::before {
-  background: #7f5cff;
-  box-shadow: 0 0 12px rgba(127, 92, 255, 0.72);
-}
-
-.currency.blood::before {
-  border-radius: 2px;
-  background: #c52222;
-  box-shadow: 0 0 12px rgba(197, 34, 34, 0.72);
-  transform: rotate(45deg);
-}
-
-.player-name {
-  padding-left: 4px;
+  top: 12px;
+  right: clamp(14px, 3.6vw, 44px);
+  width: min(528px, 42vw);
+  height: auto;
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.42));
+  user-select: none;
 }
 
 .menu-panel {
@@ -837,10 +806,7 @@ h1 {
 @media (max-width: 700px) {
   .player-strip {
     right: 14px;
-    gap: 8px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    max-width: 62vw;
+    width: min(330px, 62vw);
   }
 
   .menu-panel {
