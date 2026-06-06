@@ -10,6 +10,7 @@ const secondPasswordPlayer = document.querySelector("#second-password-player");
 const menuScreen = document.querySelector("#dbd-menu");
 const playMenuButton = document.querySelector("#play-menu");
 const killerMenuButton = document.querySelector("#killer-menu");
+const killerMenuLabel = killerMenuButton.querySelector("span");
 const sceneImage = document.querySelector(".scene-image");
 const lockerButton = document.querySelector("#open-locker");
 const modal = document.querySelector("#gift-modal");
@@ -36,6 +37,8 @@ const finalGiftPassword = "tiffany";
 let introHidden = false;
 let wrongPasswordFocusTarget = null;
 let wrongPasswordTimer = null;
+
+killerMenuLabel.textContent = "Recompensa";
 
 function hideIntro() {
   if (introHidden) {
