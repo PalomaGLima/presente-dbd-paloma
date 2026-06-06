@@ -15,12 +15,9 @@ const lockerButton = document.querySelector("#open-locker");
 const modal = document.querySelector("#gift-modal");
 const closeButton = document.querySelector("#close-modal");
 const finalNote = document.querySelector("#final-note");
-const rewardButtons = document.querySelectorAll(".reward-choice");
-const rewardDetail = document.querySelector("#reward-detail");
-const selectedRewardLabel = document.querySelector("#selected-reward-label");
-const selectedRewardCode = document.querySelector("#selected-reward-code");
-const copySelectedCodeButton = document.querySelector("#copy-selected-code");
-const closeRewardDetailButton = document.querySelector("#close-reward-detail");
+const steamCodeValue = document.querySelector("#steam-code");
+const bonusCodeValue = document.querySelector("#bonus-code");
+const copyRewardCodeButtons = document.querySelectorAll(".copy-reward-code");
 const passwordGate = document.querySelector("#password-gate");
 const passwordInput = document.querySelector("#password-input");
 const passwordFeedback = document.querySelector("#password-feedback");
@@ -29,8 +26,6 @@ const continuePasswordButton = document.querySelector("#continue-password");
 const finalPasswordGate = document.querySelector("#final-password-gate");
 const finalPasswordInput = document.querySelector("#final-password-input");
 const finalPasswordFeedback = document.querySelector("#final-password-feedback");
-const rewardReadyStep = document.querySelector("#reward-ready-step");
-const receiveRewardButton = document.querySelector("#receive-reward");
 const giftContent = document.querySelector("#gift-content");
 const giftCard = document.querySelector(".gift-card");
 
@@ -41,8 +36,6 @@ const finalGiftPassword = "tiffany";
 let introHidden = false;
 let wrongPasswordFocusTarget = null;
 let wrongPasswordTimer = null;
-let selectedRewardCodeValue = "";
-let selectedRewardButton = null;
 
 function hideIntro() {
   if (introHidden) {
@@ -112,7 +105,7 @@ function showCorrectPasswordVideo() {
 function hideSecondPasswordVideo() {
   secondPasswordPlayer.pause();
   secondPasswordOverlay.hidden = true;
-  showRewardReadyStep();
+  revealGift();
 }
 
 function showSecondPasswordVideo() {
@@ -152,16 +145,14 @@ function openGift() {
   passwordGate.hidden = false;
   congratsStep.hidden = true;
   finalPasswordGate.hidden = true;
-  rewardReadyStep.hidden = true;
   giftContent.hidden = true;
-  rewardDetail.hidden = true;
   giftCard.classList.add("locked");
-  giftCard.classList.remove("revealed");
-  selectedRewardCode.textContent = "?????-?????-?????";
-  selectedRewardLabel.textContent = "Recompensa";
-  selectedRewardCodeValue = "";
-  selectedRewardButton = null;
-  copySelectedCodeButton.textContent = "Copiar codigo";
+  giftCard.classList.remove("revealed", "rewards-open");
+  steamCodeValue.textContent = "?????-?????-?????";
+  bonusCodeValue.textContent = "?????-?????-?????";
+  copyRewardCodeButtons.forEach((button) => {
+    button.textContent = "Copiar codigo";
+  });
   passwordInput.value = "";
   passwordInput.placeholder = "Digite a senha";
   passwordFeedback.textContent = "";
@@ -184,49 +175,22 @@ function showFinalPasswordGate() {
   finalPasswordInput.focus();
 }
 
-function showRewardReadyStep() {
-  finalPasswordGate.hidden = true;
-  rewardReadyStep.hidden = false;
-  receiveRewardButton.focus();
-}
-
 function closeGift() {
   modal.hidden = true;
   lockerButton.focus();
 }
 
 function revealGift() {
+  steamCodeValue.textContent = steamCode;
+  bonusCodeValue.textContent = bonusCode;
   passwordGate.hidden = true;
   congratsStep.hidden = true;
   finalPasswordGate.hidden = true;
-  rewardReadyStep.hidden = true;
   giftContent.hidden = false;
-  rewardDetail.hidden = true;
   giftCard.classList.remove("locked");
-  giftCard.classList.add("revealed");
+  giftCard.classList.add("revealed", "rewards-open");
   finalNote.textContent = "A fogueira esta acesa. Boa partida.";
-  rewardButtons[0].focus();
-}
-
-function openRewardDetail(button) {
-  const isBonusReward = button.dataset.reward === "bonus";
-
-  selectedRewardButton = button;
-  selectedRewardCodeValue = isBonusReward ? bonusCode : steamCode;
-  selectedRewardLabel.textContent = isBonusReward ? "Recompensa 2" : "Recompensa 1";
-  selectedRewardCode.textContent = selectedRewardCodeValue;
-  copySelectedCodeButton.textContent = "Copiar codigo";
-  finalNote.textContent = "A fogueira esta acesa. Boa partida.";
-  rewardDetail.hidden = false;
-  copySelectedCodeButton.focus();
-}
-
-function closeRewardDetail() {
-  rewardDetail.hidden = true;
-
-  if (selectedRewardButton) {
-    selectedRewardButton.focus();
-  }
+  copyRewardCodeButtons[0].focus();
 }
 
 playMenuButton.addEventListener("click", toggleKillerChoice);
@@ -234,11 +198,6 @@ killerMenuButton.addEventListener("click", enterKillerScene);
 lockerButton.addEventListener("click", openGift);
 closeButton.addEventListener("click", closeGift);
 continuePasswordButton.addEventListener("click", showFinalPasswordGate);
-receiveRewardButton.addEventListener("click", revealGift);
-closeRewardDetailButton.addEventListener("click", closeRewardDetail);
-rewardButtons.forEach((button) => {
-  button.addEventListener("click", () => openRewardDetail(button));
-});
 
 passwordGate.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -285,12 +244,18 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-copySelectedCodeButton.addEventListener("click", async () => {
-  try {
-    await navigator.clipboard.writeText(selectedRewardCodeValue);
-    copySelectedCodeButton.textContent = "Codigo copiado";
-    finalNote.textContent = `${selectedRewardLabel.textContent} copiada para a area de transferencia.`;
-  } catch {
-    finalNote.textContent = "Selecione o codigo e copie manualmente.";
-  }
+copyRewardCodeButtons.forEach((button) => {
+  button.addEventListener("click", async () => {
+    const isBonusReward = button.dataset.reward === "bonus";
+    const rewardCode = isBonusReward ? bonusCode : steamCode;
+    const rewardLabel = isBonusReward ? "Recompensa 2" : "Recompensa 1";
+
+    try {
+      await navigator.clipboard.writeText(rewardCode);
+      button.textContent = "Codigo copiado";
+      finalNote.textContent = `${rewardLabel} copiada para a area de transferencia.`;
+    } catch {
+      finalNote.textContent = "Selecione o codigo e copie manualmente.";
+    }
+  });
 });
