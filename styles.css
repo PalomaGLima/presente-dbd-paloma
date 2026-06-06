@@ -413,6 +413,10 @@ button {
   display: none;
 }
 
+.gift-card.state-switching {
+  visibility: hidden;
+}
+
 .gift-card::before,
 .gift-card::after {
   content: "";

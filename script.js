@@ -175,14 +175,18 @@ function showCongratsStep() {
 }
 
 function showFinalPasswordGate() {
-  giftCard.style.visibility = "hidden";
+  giftCard.classList.add("state-switching");
   giftCard.classList.add("locked");
+  passwordGate.hidden = true;
   finalPasswordGate.hidden = false;
   congratsStep.hidden = true;
+  giftContent.hidden = true;
 
   requestAnimationFrame(() => {
-    giftCard.style.visibility = "";
-    finalPasswordInput.focus();
+    requestAnimationFrame(() => {
+      giftCard.classList.remove("state-switching");
+      finalPasswordInput.focus();
+    });
   });
 }
 
