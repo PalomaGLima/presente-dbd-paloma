@@ -57,6 +57,7 @@ function openGift() {
   passwordFeedback.textContent = "";
   lockerButton.classList.add("opened");
   ghostVideo.currentTime = 0;
+  ghostVideo.volume = 0.35;
   ghostVideo.muted = false;
   ghostVideo.play().catch(() => {
     ghostVideo.muted = true;
