@@ -5,6 +5,8 @@ const wrongPasswordOverlay = document.querySelector("#wrong-password-video");
 const wrongPasswordImage = document.querySelector("#wrong-password-image");
 const correctPasswordOverlay = document.querySelector("#correct-password-video");
 const correctPasswordPlayer = document.querySelector("#correct-password-player");
+const secondPasswordOverlay = document.querySelector("#second-password-video");
+const secondPasswordPlayer = document.querySelector("#second-password-player");
 const menuScreen = document.querySelector("#dbd-menu");
 const playMenuButton = document.querySelector("#play-menu");
 const killerMenuButton = document.querySelector("#killer-menu");
@@ -100,6 +102,20 @@ function showCorrectPasswordVideo() {
   correctPasswordPlayer.muted = false;
   correctPasswordPlayer.volume = 0.03;
   correctPasswordPlayer.play().catch(hideCorrectPasswordVideo);
+}
+
+function hideSecondPasswordVideo() {
+  secondPasswordPlayer.pause();
+  secondPasswordOverlay.hidden = true;
+  showRewardReadyStep();
+}
+
+function showSecondPasswordVideo() {
+  secondPasswordOverlay.hidden = false;
+  secondPasswordPlayer.currentTime = 0;
+  secondPasswordPlayer.muted = false;
+  secondPasswordPlayer.volume = 0.25;
+  secondPasswordPlayer.play().catch(hideSecondPasswordVideo);
 }
 
 function toggleKillerChoice() {
@@ -212,7 +228,7 @@ finalPasswordGate.addEventListener("submit", (event) => {
   event.preventDefault();
 
   if (normalizePassword(finalPasswordInput.value) === finalGiftPassword) {
-    showRewardReadyStep();
+    showSecondPasswordVideo();
     return;
   }
 
@@ -224,6 +240,8 @@ finalPasswordGate.addEventListener("submit", (event) => {
 
 correctPasswordPlayer.addEventListener("ended", hideCorrectPasswordVideo);
 correctPasswordPlayer.addEventListener("error", hideCorrectPasswordVideo);
+secondPasswordPlayer.addEventListener("ended", hideSecondPasswordVideo);
+secondPasswordPlayer.addEventListener("error", hideSecondPasswordVideo);
 
 modal.addEventListener("click", (event) => {
   if (event.target === modal) {

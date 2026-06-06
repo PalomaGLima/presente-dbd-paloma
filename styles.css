@@ -96,7 +96,8 @@ button {
 }
 
 .wrong-password-video,
-.correct-password-video {
+.correct-password-video,
+.second-password-video {
   position: fixed;
   z-index: 30;
   inset: 0;
@@ -105,12 +106,14 @@ button {
 }
 
 .wrong-password-video[hidden],
-.correct-password-video[hidden] {
+.correct-password-video[hidden],
+.second-password-video[hidden] {
   display: none;
 }
 
 .wrong-password-video img,
-.correct-password-video video {
+.correct-password-video video,
+.second-password-video video {
   width: 100%;
   height: 100%;
   object-fit: cover;
