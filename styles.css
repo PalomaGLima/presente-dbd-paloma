@@ -111,7 +111,7 @@ button {
   display: none;
 }
 
-.wrong-password-video img,
+.wrong-password-video video,
 .correct-password-video video,
 .second-password-video video {
   width: 100%;

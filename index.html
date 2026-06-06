@@ -7,7 +7,7 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <title>Presente no Armario</title>
-    <link rel="stylesheet" href="styles.css?v=20260606-2" />
+    <link rel="stylesheet" href="styles.css?v=20260606-3" />
   </head>
   <body>
     <section class="intro-video" id="intro-video" aria-label="Introducao em video">
@@ -180,12 +180,9 @@
     </main>
 
     <section class="wrong-password-video" id="wrong-password-video" aria-label="Senha errada" hidden>
-      <img
-        id="wrong-password-image"
-        src="assets/wesker-wrong-password.gif"
-        alt=""
-        aria-hidden="true"
-      />
+      <video id="wrong-password-player" playsinline preload="auto">
+        <source src="assets/wrong-password.mp4" type="video/mp4" />
+      </video>
     </section>
 
     <section class="correct-password-video" id="correct-password-video" aria-label="Senha correta" hidden>
@@ -200,6 +197,6 @@
       </video>
     </section>
 
-    <script src="script.js?v=20260606-2"></script>
+    <script src="script.js?v=20260606-3"></script>
   </body>
 </html>

@@ -2,7 +2,7 @@ const scene = document.querySelector(".locker-scene");
 const introOverlay = document.querySelector("#intro-video");
 const introPlayer = document.querySelector("#intro-player");
 const wrongPasswordOverlay = document.querySelector("#wrong-password-video");
-const wrongPasswordImage = document.querySelector("#wrong-password-image");
+const wrongPasswordPlayer = document.querySelector("#wrong-password-player");
 const correctPasswordOverlay = document.querySelector("#correct-password-video");
 const correctPasswordPlayer = document.querySelector("#correct-password-player");
 const secondPasswordOverlay = document.querySelector("#second-password-video");
@@ -75,6 +75,7 @@ function normalizePassword(value) {
 
 function hideWrongPasswordVideo() {
   clearTimeout(wrongPasswordTimer);
+  wrongPasswordPlayer.pause();
   wrongPasswordOverlay.hidden = true;
 
   if (wrongPasswordFocusTarget) {
@@ -85,10 +86,13 @@ function hideWrongPasswordVideo() {
 function showWrongPasswordVideo(focusTarget) {
   wrongPasswordFocusTarget = focusTarget;
   clearTimeout(wrongPasswordTimer);
-  wrongPasswordImage.src = "";
-  wrongPasswordImage.src = "assets/wesker-wrong-password.gif";
   wrongPasswordOverlay.hidden = false;
-  wrongPasswordTimer = setTimeout(hideWrongPasswordVideo, 3200);
+  wrongPasswordPlayer.currentTime = 0;
+  wrongPasswordPlayer.muted = false;
+  wrongPasswordPlayer.volume = 1;
+  wrongPasswordPlayer.play().catch(() => {
+    wrongPasswordTimer = setTimeout(hideWrongPasswordVideo, 3200);
+  });
 }
 
 function hideCorrectPasswordVideo() {
@@ -232,6 +236,8 @@ finalPasswordGate.addEventListener("submit", (event) => {
 
 correctPasswordPlayer.addEventListener("ended", hideCorrectPasswordVideo);
 correctPasswordPlayer.addEventListener("error", hideCorrectPasswordVideo);
+wrongPasswordPlayer.addEventListener("ended", hideWrongPasswordVideo);
+wrongPasswordPlayer.addEventListener("error", hideWrongPasswordVideo);
 secondPasswordPlayer.addEventListener("ended", hideSecondPasswordVideo);
 secondPasswordPlayer.addEventListener("error", hideSecondPasswordVideo);
 
