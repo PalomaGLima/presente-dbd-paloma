@@ -545,7 +545,7 @@ h1 {
 
 #password-gate {
   width: min(680px, 82%);
-  transform: translateY(clamp(-86px, -7vw, -48px));
+  transform: translateY(clamp(28px, 4.8vw, 56px));
 }
 
 #final-password-gate {
@@ -966,7 +966,7 @@ h1 {
 
   #password-gate {
     width: min(430px, 86%);
-    transform: translateY(clamp(-52px, -10vw, -28px));
+    transform: translateY(clamp(22px, 7vw, 44px));
   }
 
   #final-password-gate {
