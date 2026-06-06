@@ -17,6 +17,7 @@ const assassinScreen = document.querySelector("#assassin-screen");
 const backToMenuButton = document.querySelector("#back-to-menu");
 const sceneImage = document.querySelector(".scene-image");
 const lockerButton = document.querySelector("#open-locker");
+const backFromRewardButton = document.querySelector("#back-from-reward");
 const modal = document.querySelector("#gift-modal");
 const closeButton = document.querySelector("#close-modal");
 const finalNote = document.querySelector("#final-note");
@@ -157,6 +158,16 @@ function returnToMenu() {
   playMenuButton.focus();
 }
 
+function returnFromRewardToMenu() {
+  modal.hidden = true;
+  scene.hidden = true;
+  menuScreen.hidden = false;
+  sceneImage.src = "assets/dbd-locker-background.png";
+  sceneImage.alt = "Cena de Dead by Daylight com armarios vermelhos em um ambiente azul";
+  lockerButton.classList.remove("opened");
+  playMenuButton.focus();
+}
+
 function openGift() {
   modal.hidden = false;
   sceneImage.src = "assets/locker-open.png";
@@ -228,6 +239,7 @@ playMenuButton.addEventListener("click", toggleKillerChoice);
 killerMenuButton.addEventListener("click", enterKillerScene);
 assassinMenuButton.addEventListener("click", enterAssassinScreen);
 backToMenuButton.addEventListener("click", returnToMenu);
+backFromRewardButton.addEventListener("click", returnFromRewardToMenu);
 lockerButton.addEventListener("click", openGift);
 closeButton.addEventListener("click", closeGift);
 continuePasswordButton.addEventListener("click", showFinalPasswordGate);

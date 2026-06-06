@@ -190,6 +190,10 @@ button {
   text-transform: uppercase;
 }
 
+.locker-back-button {
+  z-index: 4;
+}
+
 .assassin-panel {
   position: absolute;
   z-index: 1;
