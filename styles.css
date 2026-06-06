@@ -241,22 +241,7 @@ button {
   filter: drop-shadow(0 0 8px rgba(241, 232, 220, 0.16));
 }
 
-.tally-mark {
-  clip-path: polygon(50% 0, 100% 18%, 78% 100%, 18% 100%, 0 20%);
-}
-
-.tally-mark::before {
-  content: "////";
-  display: block;
-  color: rgba(241, 232, 220, 0.78);
-  font-size: 1.3rem;
-  font-weight: 900;
-  letter-spacing: -0.1em;
-  line-height: 42px;
-  text-align: center;
-  transform: rotate(-16deg);
-}
-
+.play-icon,
 .killer-icon {
   object-fit: contain;
   background: transparent;
@@ -774,11 +759,6 @@ h1 {
     width: 34px;
     height: 34px;
     margin-left: 17px;
-  }
-
-  .tally-mark::before {
-    font-size: 1.08rem;
-    line-height: 34px;
   }
 
   .scene-image {
