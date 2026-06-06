@@ -97,7 +97,7 @@ function showCorrectPasswordVideo() {
   correctPasswordOverlay.hidden = false;
   correctPasswordPlayer.currentTime = 0;
   correctPasswordPlayer.muted = false;
-  correctPasswordPlayer.volume = 0.35;
+  correctPasswordPlayer.volume = 0.12;
   correctPasswordPlayer.play().catch(hideCorrectPasswordVideo);
 }
 
