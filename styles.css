@@ -194,6 +194,10 @@ button {
   transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, background 180ms ease;
 }
 
+.menu-choice[hidden] {
+  display: none;
+}
+
 .menu-choice:hover,
 .menu-choice:focus-visible {
   transform: translateX(6px);
