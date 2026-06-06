@@ -1,7 +1,6 @@
 const scene = document.querySelector(".locker-scene");
 const introOverlay = document.querySelector("#intro-video");
 const introPlayer = document.querySelector("#intro-player");
-const skipIntroButton = document.querySelector("#skip-intro");
 const lockerButton = document.querySelector("#open-locker");
 const modal = document.querySelector("#gift-modal");
 const closeButton = document.querySelector("#close-modal");
@@ -30,11 +29,23 @@ function hideIntro() {
   introPlayer.pause();
 }
 
-introPlayer.addEventListener("ended", hideIntro);
-skipIntroButton.addEventListener("click", hideIntro);
+function playIntroWithAudio() {
+  introPlayer.muted = false;
+  introPlayer.volume = 1;
+  return introPlayer.play();
+}
 
-introPlayer.play().catch(() => {
-  skipIntroButton.textContent = "Entrar";
+function startIntroAfterGesture() {
+  introOverlay.classList.remove("awaiting-start");
+  playIntroWithAudio().catch(() => {});
+}
+
+introPlayer.addEventListener("ended", hideIntro);
+introPlayer.addEventListener("error", hideIntro);
+
+playIntroWithAudio().catch(() => {
+  introOverlay.classList.add("awaiting-start");
+  introOverlay.addEventListener("pointerdown", startIntroAfterGesture, { once: true });
 });
 
 function normalizePassword(value) {
