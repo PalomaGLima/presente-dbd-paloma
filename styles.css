@@ -545,8 +545,8 @@ h1 {
 #password-gate {
   position: absolute;
   left: 50%;
-  top: 50%;
-  width: min(680px, 82%);
+  top: 55%;
+  width: min(620px, 72%);
   transform: translate(-50%, -50%);
 }
 
@@ -967,7 +967,8 @@ h1 {
   }
 
   #password-gate {
-    width: min(430px, 86%);
+    top: 55%;
+    width: min(400px, 80%);
     transform: translate(-50%, -50%);
   }
 
