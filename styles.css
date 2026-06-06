@@ -542,7 +542,8 @@ h1 {
   padding-top: 0;
 }
 
-#password-gate {
+#password-gate,
+#final-password-gate {
   position: absolute;
   left: 50%;
   top: 55%;
@@ -551,7 +552,7 @@ h1 {
 }
 
 #final-password-gate {
-  padding-top: clamp(84px, 15vw, 150px);
+  padding-top: 0;
 }
 
 .password-gate[hidden],
@@ -966,14 +967,15 @@ h1 {
     padding-top: 0;
   }
 
-  #password-gate {
+  #password-gate,
+  #final-password-gate {
     top: 55%;
     width: min(400px, 80%);
     transform: translate(-50%, -50%);
   }
 
   #final-password-gate {
-    padding-top: clamp(72px, 20vw, 120px);
+    padding-top: 0;
   }
 
   .password-row {

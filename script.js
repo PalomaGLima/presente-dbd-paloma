@@ -170,12 +170,14 @@ function openGift() {
 function showCongratsStep() {
   passwordGate.hidden = true;
   congratsStep.hidden = false;
+  giftCard.classList.remove("locked");
   continuePasswordButton.focus();
 }
 
 function showFinalPasswordGate() {
   congratsStep.hidden = true;
   finalPasswordGate.hidden = false;
+  giftCard.classList.add("locked");
   finalPasswordInput.focus();
 }
 
