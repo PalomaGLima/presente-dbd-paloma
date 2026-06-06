@@ -7,7 +7,7 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <title>Presente no Armario</title>
-    <link rel="stylesheet" href="styles.css?v=20260606-3" />
+    <link rel="stylesheet" href="styles.css?v=20260606-4" />
   </head>
   <body>
     <section class="intro-video" id="intro-video" aria-label="Introducao em video">
@@ -78,6 +78,7 @@
       <section class="gift-modal" id="gift-modal" aria-label="Presente no armario" hidden>
         <div class="gift-card locked" id="gift-card" hidden>
           <form class="password-gate" id="password-gate">
+            <p class="locked-title">Nivel bloqueado!</p>
             <div class="password-row">
               <input
                 id="password-input"
@@ -87,7 +88,7 @@
                 placeholder="Digite a senha"
               />
               <button class="primary-action" type="submit">
-                Abrir
+                Entrar
               </button>
             </div>
             <p class="sr-only" id="password-feedback" aria-live="polite"></p>
@@ -105,6 +106,7 @@
           </div>
 
           <form class="password-gate" id="final-password-gate" hidden>
+            <p class="locked-title">Ultimo bloqueio!</p>
             <div class="password-row">
               <input
                 id="final-password-input"
@@ -114,7 +116,7 @@
                 placeholder="Digite a segunda senha"
               />
               <button class="primary-action" type="submit">
-                Abrir
+                Entrar
               </button>
             </div>
             <p class="sr-only" id="final-password-feedback" aria-live="polite"></p>
@@ -197,6 +199,6 @@
       </video>
     </section>
 
-    <script src="script.js?v=20260606-3"></script>
+    <script src="script.js?v=20260606-4"></script>
   </body>
 </html>
