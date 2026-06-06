@@ -540,6 +540,15 @@ h1 {
   z-index: 1;
   width: min(680px, 100%);
   margin: 0 auto;
+  padding-top: 0;
+}
+
+#password-gate {
+  width: min(540px, 72%);
+  transform: translateY(-8px);
+}
+
+#final-password-gate {
   padding-top: clamp(84px, 15vw, 150px);
 }
 
@@ -952,6 +961,15 @@ h1 {
   }
 
   .password-gate {
+    padding-top: 0;
+  }
+
+  #password-gate {
+    width: min(420px, 78%);
+    transform: translateY(-4px);
+  }
+
+  #final-password-gate {
     padding-top: clamp(72px, 20vw, 120px);
   }
 
