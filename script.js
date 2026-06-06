@@ -13,6 +13,11 @@ const finalNote = document.querySelector("#final-note");
 const passwordGate = document.querySelector("#password-gate");
 const passwordInput = document.querySelector("#password-input");
 const passwordFeedback = document.querySelector("#password-feedback");
+const congratsStep = document.querySelector("#congrats-step");
+const continuePasswordButton = document.querySelector("#continue-password");
+const finalPasswordGate = document.querySelector("#final-password-gate");
+const finalPasswordInput = document.querySelector("#final-password-input");
+const finalPasswordFeedback = document.querySelector("#final-password-feedback");
 const giftContent = document.querySelector("#gift-content");
 const giftCard = document.querySelector(".gift-card");
 const ghostVideoStage = document.querySelector("#ghost-video-stage");
@@ -20,6 +25,7 @@ const ghostVideo = document.querySelector("#ghost-video");
 
 const steamCode = scene.dataset.code;
 const giftPassword = "ghost face";
+const finalGiftPassword = "tiffany";
 let introHidden = false;
 
 function hideIntro() {
@@ -73,6 +79,8 @@ function openGift() {
   ghostVideoStage.hidden = false;
   giftCard.hidden = true;
   passwordGate.hidden = true;
+  congratsStep.hidden = true;
+  finalPasswordGate.hidden = true;
   giftContent.hidden = true;
   giftCard.classList.add("locked");
   giftCard.classList.remove("revealed");
@@ -82,6 +90,9 @@ function openGift() {
   passwordInput.value = "";
   passwordInput.placeholder = "Digite a senha";
   passwordFeedback.textContent = "";
+  finalPasswordInput.value = "";
+  finalPasswordInput.placeholder = "Digite a segunda senha";
+  finalPasswordFeedback.textContent = "";
   lockerButton.classList.add("opened");
   ghostVideo.currentTime = 0;
   ghostVideo.volume = 0.35;
@@ -100,6 +111,18 @@ function showPasswordGate() {
   passwordInput.focus();
 }
 
+function showCongratsStep() {
+  passwordGate.hidden = true;
+  congratsStep.hidden = false;
+  continuePasswordButton.focus();
+}
+
+function showFinalPasswordGate() {
+  congratsStep.hidden = true;
+  finalPasswordGate.hidden = false;
+  finalPasswordInput.focus();
+}
+
 function closeGift() {
   ghostVideo.pause();
   modal.hidden = true;
@@ -109,6 +132,8 @@ function closeGift() {
 function revealGift() {
   codeValue.textContent = steamCode;
   passwordGate.hidden = true;
+  congratsStep.hidden = true;
+  finalPasswordGate.hidden = true;
   giftContent.hidden = false;
   giftCard.classList.remove("locked");
   giftCard.classList.add("revealed");
@@ -122,12 +147,13 @@ killerMenuButton.addEventListener("click", enterKillerScene);
 lockerButton.addEventListener("click", openGift);
 closeButton.addEventListener("click", closeGift);
 ghostVideo.addEventListener("ended", showPasswordGate);
+continuePasswordButton.addEventListener("click", showFinalPasswordGate);
 
 passwordGate.addEventListener("submit", (event) => {
   event.preventDefault();
 
   if (normalizePassword(passwordInput.value) === giftPassword) {
-    revealGift();
+    showCongratsStep();
     return;
   }
 
@@ -135,6 +161,20 @@ passwordGate.addEventListener("submit", (event) => {
   passwordInput.placeholder = "Senha errada";
   passwordFeedback.textContent = "Senha errada.";
   passwordInput.focus();
+});
+
+finalPasswordGate.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  if (normalizePassword(finalPasswordInput.value) === finalGiftPassword) {
+    revealGift();
+    return;
+  }
+
+  finalPasswordInput.value = "";
+  finalPasswordInput.placeholder = "Senha errada";
+  finalPasswordFeedback.textContent = "Senha errada.";
+  finalPasswordInput.focus();
 });
 
 modal.addEventListener("click", (event) => {

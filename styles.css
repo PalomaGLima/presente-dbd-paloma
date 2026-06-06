@@ -534,8 +534,18 @@ h1 {
 }
 
 .password-gate[hidden],
+.congrats-step[hidden],
 .gift-content[hidden] {
   display: none;
+}
+
+.congrats-step {
+  position: relative;
+  z-index: 1;
+}
+
+.congrats-step .primary-action {
+  margin-top: 24px;
 }
 
 .password-row {

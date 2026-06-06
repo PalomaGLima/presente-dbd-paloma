@@ -88,6 +88,33 @@
             <p class="sr-only" id="password-feedback" aria-live="polite"></p>
           </form>
 
+          <div class="congrats-step" id="congrats-step" hidden>
+            <p class="survivor-note">Senha correta</p>
+            <h1>Parabens</h1>
+            <p class="message">
+              Voce escapou da primeira prova. Ainda falta uma ultima fechadura.
+            </p>
+            <button class="primary-action" id="continue-password" type="button">
+              Continuar
+            </button>
+          </div>
+
+          <form class="password-gate" id="final-password-gate" hidden>
+            <div class="password-row">
+              <input
+                id="final-password-input"
+                type="text"
+                aria-label="Senha final"
+                autocomplete="off"
+                placeholder="Digite a segunda senha"
+              />
+              <button class="primary-action" type="submit">
+                Abrir
+              </button>
+            </div>
+            <p class="sr-only" id="final-password-feedback" aria-live="polite"></p>
+          </form>
+
           <div class="gift-content" id="gift-content" hidden>
             <img class="tally-logo" src="assets/dbd-tally-marks.png" alt="" />
             <p class="survivor-note">O armario abriu</p>
