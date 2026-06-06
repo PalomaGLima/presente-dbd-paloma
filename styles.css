@@ -182,31 +182,38 @@ button {
 }
 
 .assassin-card-1 {
-  left: 10%;
-  top: 34.8%;
-  width: 20%;
-  height: 50%;
+  left: 4.2%;
+  top: 33.5%;
+  width: 16.8%;
+  height: 46.8%;
 }
 
 .assassin-card-2 {
-  left: 30.9%;
-  top: 34.8%;
-  width: 20%;
-  height: 50%;
+  left: 23%;
+  top: 33.5%;
+  width: 16.8%;
+  height: 46.8%;
 }
 
 .assassin-card-3 {
-  left: 51.8%;
-  top: 34.8%;
-  width: 20%;
-  height: 50%;
+  left: 41.8%;
+  top: 33.5%;
+  width: 16.8%;
+  height: 46.8%;
 }
 
 .assassin-card-4 {
-  left: 72.7%;
-  top: 34.8%;
-  width: 20%;
-  height: 50%;
+  left: 60.6%;
+  top: 33.5%;
+  width: 16.8%;
+  height: 46.8%;
+}
+
+.assassin-card-5 {
+  left: 79.5%;
+  top: 33.5%;
+  width: 16.8%;
+  height: 46.8%;
 }
 
 .assassin-back-hotspot {
