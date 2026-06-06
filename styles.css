@@ -127,7 +127,7 @@ button {
   background:
     linear-gradient(90deg, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.08) 42%, rgba(0, 0, 0, 0.34)),
     radial-gradient(circle at 53% 62%, rgba(255, 93, 42, 0.2), transparent 16%),
-    url("assets/dbd-menu-background.png") center / cover no-repeat,
+    url("assets/dbd-menu-background-new.png") center / cover no-repeat,
     #070a0c;
 }
 
