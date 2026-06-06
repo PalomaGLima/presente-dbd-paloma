@@ -7,21 +7,24 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <title>Presente no Armario</title>
-    <link rel="stylesheet" href="styles.css?v=20260606-4" />
+    <link rel="stylesheet" href="styles.css?v=20260606-5" />
   </head>
   <body>
     <section class="intro-video" id="intro-video" aria-label="Introducao em video">
+      <div class="intro-start-screen" aria-hidden="true"></div>
+      <button
+        class="intro-start-button"
+        id="intro-start-button"
+        type="button"
+        aria-label="Clique para iniciar"
+      ></button>
       <video
         id="intro-player"
-        autoplay
         playsinline
         preload="auto"
       >
         <source src="assets/dbd-intro.mp4" type="video/mp4" />
       </video>
-      <div class="intro-start-notice" aria-live="polite">
-        <span>Clique para iniciar</span>
-      </div>
     </section>
 
     <section class="dbd-menu" id="dbd-menu" aria-label="Menu de jogo">
@@ -199,6 +202,6 @@
       </video>
     </section>
 
-    <script src="script.js?v=20260606-4"></script>
+    <script src="script.js?v=20260606-5"></script>
   </body>
 </html>

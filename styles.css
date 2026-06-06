@@ -52,39 +52,36 @@ button {
   cursor: pointer;
 }
 
-.intro-start-notice {
+.intro-start-screen {
   position: absolute;
+  z-index: 2;
   inset: 0;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  color: var(--bone);
-  background:
-    radial-gradient(circle at center, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.72)),
-    rgba(0, 0, 0, 0.22);
+  background: url("assets/start-screen.png") center / cover no-repeat #050707;
+  transition: opacity 320ms ease, visibility 320ms ease;
+}
+
+.intro-start-button {
+  position: absolute;
+  z-index: 3;
+  right: clamp(72px, 7.6vw, 150px);
+  bottom: clamp(58px, 10.2vw, 150px);
+  width: clamp(96px, 9vw, 168px);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  cursor: pointer;
+  background: transparent;
+}
+
+.intro-start-button:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 5px;
+}
+
+.intro-video.started .intro-start-screen,
+.intro-video.started .intro-start-button {
+  visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  text-align: center;
-  transition: opacity 240ms ease;
-}
-
-.intro-video.awaiting-start .intro-start-notice {
-  opacity: 1;
-}
-
-.intro-start-notice span {
-  max-width: min(420px, 86vw);
-  border: 1px solid rgba(255, 80, 56, 0.42);
-  border-radius: 8px;
-  padding: 16px 18px;
-  background: rgba(3, 5, 6, 0.72);
-  box-shadow:
-    0 18px 46px rgba(0, 0, 0, 0.5),
-    0 0 28px rgba(214, 35, 35, 0.22);
-  font-size: clamp(1rem, 3vw, 1.2rem);
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
 .intro-video video {

@@ -1,6 +1,7 @@
 const scene = document.querySelector(".locker-scene");
 const introOverlay = document.querySelector("#intro-video");
 const introPlayer = document.querySelector("#intro-player");
+const introStartButton = document.querySelector("#intro-start-button");
 const wrongPasswordOverlay = document.querySelector("#wrong-password-video");
 const wrongPasswordPlayer = document.querySelector("#wrong-password-player");
 const correctPasswordOverlay = document.querySelector("#correct-password-video");
@@ -57,17 +58,13 @@ function playIntroWithAudio() {
 }
 
 function startIntroAfterGesture() {
-  introOverlay.classList.remove("awaiting-start");
+  introOverlay.classList.add("started");
   playIntroWithAudio().catch(() => {});
 }
 
 introPlayer.addEventListener("ended", hideIntro);
 introPlayer.addEventListener("error", hideIntro);
-
-playIntroWithAudio().catch(() => {
-  introOverlay.classList.add("awaiting-start");
-  introOverlay.addEventListener("pointerdown", startIntroAfterGesture, { once: true });
-});
+introStartButton.addEventListener("click", startIntroAfterGesture, { once: true });
 
 function normalizePassword(value) {
   return value.trim().toLowerCase().replace(/\s+/g, " ");
