@@ -136,28 +136,40 @@
               Feliz aniversario. Duas recompensas foram encontradas no armario.
             </p>
 
-            <div class="reward-grid">
-              <div class="code-box">
+            <div class="reward-choice-grid" aria-label="Escolha uma recompensa">
+              <button class="reward-choice" type="button" data-reward="steam">
                 <span class="item-found-label">Item encontrado</span>
                 <span class="code-label">Recompensa 1</span>
-                <strong id="steam-code" class="code-value" aria-live="polite">
-                  ?????-?????-?????
-                </strong>
-              </div>
+                <strong>Abrir primeira telinha</strong>
+              </button>
 
-              <div class="code-box">
+              <button class="reward-choice" type="button" data-reward="bonus">
                 <span class="item-found-label">Item encontrado</span>
                 <span class="code-label">Recompensa 2</span>
-                <strong id="bonus-code" class="code-value" aria-live="polite">
+                <strong>Abrir segunda telinha</strong>
+              </button>
+            </div>
+
+            <section class="reward-detail" id="reward-detail" aria-label="Codigo da recompensa" hidden>
+              <div class="code-box single-reward-box">
+                <span class="item-found-label">Item encontrado</span>
+                <span class="code-label" id="selected-reward-label">Recompensa</span>
+                <strong id="selected-reward-code" class="code-value" aria-live="polite">
                   ?????-?????-?????
                 </strong>
               </div>
-            </div>
+
+              <div class="actions reward-detail-actions">
+                <button class="primary-action" id="copy-selected-code" type="button">
+                  Copiar codigo
+                </button>
+                <button class="ghost-action" id="close-reward-detail" type="button">
+                  Voltar
+                </button>
+              </div>
+            </section>
 
             <div class="actions">
-              <button class="primary-action" id="copy-code" type="button" disabled>
-                Copiar recompensas
-              </button>
               <button class="ghost-action" id="close-modal" type="button">
                 Fechar armario
               </button>

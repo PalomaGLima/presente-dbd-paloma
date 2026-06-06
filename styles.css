@@ -565,7 +565,8 @@ h1 {
   box-shadow: 0 0 0 3px rgba(255, 80, 56, 0.18);
 }
 
-.code-box {
+.code-box,
+.reward-choice {
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -584,7 +585,7 @@ h1 {
     0 0 24px rgba(214, 35, 35, 0.16);
 }
 
-.reward-grid {
+.reward-choice-grid {
   position: relative;
   z-index: 1;
   display: grid;
@@ -593,12 +594,53 @@ h1 {
   margin: 26px auto 0;
 }
 
-.reward-grid .code-box {
+.reward-choice {
   width: 100%;
   margin: 0;
+  color: var(--bone);
+  cursor: pointer;
+  text-align: center;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
-.code-box::before {
+.reward-choice:hover,
+.reward-choice:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(255, 120, 96, 0.92);
+  outline: none;
+  box-shadow:
+    inset 0 0 42px rgba(214, 35, 35, 0.24),
+    0 0 30px rgba(214, 35, 35, 0.28);
+}
+
+.reward-choice strong {
+  position: relative;
+  z-index: 1;
+  display: block;
+  color: var(--bone);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.08rem, 4vw, 1.55rem);
+  line-height: 1.15;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(214, 35, 35, 0.45);
+}
+
+.reward-detail[hidden] {
+  display: none;
+}
+
+.reward-detail {
+  position: relative;
+  z-index: 1;
+}
+
+.single-reward-box {
+  width: min(460px, 100%);
+}
+
+.code-box::before,
+.reward-choice::before {
   content: "";
   position: absolute;
   left: 12px;
@@ -608,7 +650,8 @@ h1 {
   background: linear-gradient(90deg, transparent, rgba(255, 80, 56, 0.82), transparent);
 }
 
-.code-box::after {
+.code-box::after,
+.reward-choice::after {
   content: "";
   position: absolute;
   right: -16px;
