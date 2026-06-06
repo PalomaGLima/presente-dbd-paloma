@@ -15,6 +15,7 @@ const assassinMenuButton = document.querySelector("#assassin-menu");
 const killerMenuLabel = killerMenuButton.querySelector("span");
 const assassinScreen = document.querySelector("#assassin-screen");
 const backToMenuButton = document.querySelector("#back-to-menu");
+const assassinCardButtons = document.querySelectorAll(".assassin-card-hotspot");
 const sceneImage = document.querySelector(".scene-image");
 const lockerButton = document.querySelector("#open-locker");
 const backFromRewardButton = document.querySelector("#back-from-reward");
@@ -243,6 +244,18 @@ backFromRewardButton.addEventListener("click", returnFromRewardToMenu);
 lockerButton.addEventListener("click", openGift);
 closeButton.addEventListener("click", closeGift);
 continuePasswordButton.addEventListener("click", showFinalPasswordGate);
+
+assassinCardButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    assassinCardButtons.forEach((cardButton) => {
+      cardButton.classList.remove("selected");
+      cardButton.setAttribute("aria-pressed", "false");
+    });
+
+    button.classList.add("selected");
+    button.setAttribute("aria-pressed", "true");
+  });
+});
 
 passwordGate.addEventListener("submit", (event) => {
   event.preventDefault();
