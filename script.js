@@ -94,8 +94,8 @@ function showWrongPasswordVideo(focusTarget) {
 
 function hideCorrectPasswordVideo() {
   correctPasswordPlayer.pause();
-  correctPasswordOverlay.hidden = true;
   showCongratsStep();
+  correctPasswordOverlay.hidden = true;
 }
 
 function showCorrectPasswordVideo() {
@@ -108,8 +108,8 @@ function showCorrectPasswordVideo() {
 
 function hideSecondPasswordVideo() {
   secondPasswordPlayer.pause();
-  secondPasswordOverlay.hidden = true;
   revealGift();
+  secondPasswordOverlay.hidden = true;
 }
 
 function showSecondPasswordVideo() {
