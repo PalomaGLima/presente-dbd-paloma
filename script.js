@@ -175,10 +175,15 @@ function showCongratsStep() {
 }
 
 function showFinalPasswordGate() {
-  congratsStep.hidden = true;
-  finalPasswordGate.hidden = false;
+  giftCard.style.visibility = "hidden";
   giftCard.classList.add("locked");
-  finalPasswordInput.focus();
+  finalPasswordGate.hidden = false;
+  congratsStep.hidden = true;
+
+  requestAnimationFrame(() => {
+    giftCard.style.visibility = "";
+    finalPasswordInput.focus();
+  });
 }
 
 function closeGift() {
