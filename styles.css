@@ -113,9 +113,7 @@ button {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.46)),
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 8px);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.34));
 }
 
 .dbd-menu[hidden] {
@@ -182,9 +180,7 @@ button {
   min-height: 78px;
   border-left: 0;
   color: rgba(241, 232, 220, 0.74);
-  background:
-    linear-gradient(90deg, rgba(2, 4, 5, 0.96), rgba(7, 9, 10, 0.86)),
-    repeating-linear-gradient(112deg, rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 20px);
+  background: linear-gradient(90deg, rgba(2, 4, 5, 0.96), rgba(7, 9, 10, 0.86));
   box-shadow:
     0 12px 26px rgba(0, 0, 0, 0.48),
     inset 0 1px 0 rgba(255, 255, 255, 0.07),
@@ -203,9 +199,7 @@ button {
   transform: translateX(6px);
   color: #fff7ef;
   outline: none;
-  background:
-    linear-gradient(90deg, rgba(18, 21, 22, 0.98), rgba(8, 10, 11, 0.9)),
-    repeating-linear-gradient(112deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 20px);
+  background: linear-gradient(90deg, rgba(18, 21, 22, 0.98), rgba(8, 10, 11, 0.9));
 }
 
 .play-choice {
@@ -217,9 +211,7 @@ button {
   min-height: 72px;
   margin-top: -2px;
   color: rgba(241, 232, 220, 0.62);
-  background:
-    linear-gradient(90deg, rgba(5, 7, 8, 0.86), rgba(4, 6, 7, 0.64)),
-    repeating-linear-gradient(112deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 20px);
+  background: linear-gradient(90deg, rgba(5, 7, 8, 0.86), rgba(4, 6, 7, 0.64));
   box-shadow:
     0 10px 24px rgba(0, 0, 0, 0.38),
     inset 0 1px 0 rgba(255, 255, 255, 0.05),
