@@ -43,7 +43,12 @@
       </nav>
     </section>
 
-    <main class="locker-scene" data-code="COLOQUE-O-CODIGO-AQUI" hidden>
+    <main
+      class="locker-scene"
+      data-code="COLOQUE-O-CODIGO-AQUI"
+      data-bonus-code="COLOQUE-A-SEGUNDA-RECOMPENSA-AQUI"
+      hidden
+    >
       <img
         class="scene-image"
         src="assets/dbd-locker-background.png"
@@ -58,19 +63,6 @@
       ></button>
 
       <section class="gift-modal" id="gift-modal" aria-label="Presente no armario" hidden>
-        <div class="ghost-video-stage" id="ghost-video-stage" hidden>
-          <video
-            class="ghost-video"
-            id="ghost-video"
-            autoplay
-            playsinline
-            preload="auto"
-            muted
-          >
-            <source src="assets/corte-gh.mp4" type="video/mp4" />
-          </video>
-        </div>
-
         <div class="gift-card locked" id="gift-card" hidden>
           <form class="password-gate" id="password-gate">
             <div class="password-row">
@@ -115,26 +107,46 @@
             <p class="sr-only" id="final-password-feedback" aria-live="polite"></p>
           </form>
 
+          <div class="reward-ready-step" id="reward-ready-step" hidden>
+            <p class="survivor-note">Ultima senha correta</p>
+            <h1>Parabens</h1>
+            <p class="message">
+              Voce esta pronto para receber sua recompensa.
+            </p>
+            <button class="primary-action" id="receive-reward" type="button">
+              Receber
+            </button>
+          </div>
+
           <div class="gift-content" id="gift-content" hidden>
             <img class="tally-logo" src="assets/dbd-tally-marks.png" alt="" />
             <p class="survivor-note">O armario abriu</p>
-            <h1 id="gift-title">Seu presente escapou do nevoeiro</h1>
+            <h1 id="gift-title">Suas recompensas escaparam do nevoeiro</h1>
             <p class="message">
-              Feliz aniversario. Antes de abrir o presente, diga quem estava
-              escondido no nevoeiro.
+              Feliz aniversario. Duas recompensas foram encontradas no armario.
             </p>
 
-            <div class="code-box">
-              <span class="item-found-label">Item encontrado</span>
-              <span class="code-label">Codigo Steam</span>
-              <strong id="steam-code" class="code-value" aria-live="polite">
-                ?????-?????-?????
-              </strong>
+            <div class="reward-grid">
+              <div class="code-box">
+                <span class="item-found-label">Item encontrado</span>
+                <span class="code-label">Recompensa 1</span>
+                <strong id="steam-code" class="code-value" aria-live="polite">
+                  ?????-?????-?????
+                </strong>
+              </div>
+
+              <div class="code-box">
+                <span class="item-found-label">Item encontrado</span>
+                <span class="code-label">Recompensa 2</span>
+                <strong id="bonus-code" class="code-value" aria-live="polite">
+                  ?????-?????-?????
+                </strong>
+              </div>
             </div>
 
             <div class="actions">
               <button class="primary-action" id="copy-code" type="button" disabled>
-                Copiar codigo
+                Copiar recompensas
               </button>
               <button class="ghost-action" id="close-modal" type="button">
                 Fechar armario

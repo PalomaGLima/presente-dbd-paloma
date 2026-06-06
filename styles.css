@@ -396,29 +396,6 @@ button {
   display: none;
 }
 
-.ghost-video-stage {
-  position: fixed;
-  z-index: 1;
-  inset: 0;
-  width: 100vw;
-  height: 100svh;
-  overflow: hidden;
-  background: #000;
-}
-
-.ghost-video-stage[hidden] {
-  display: none;
-}
-
-.ghost-video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  object-fit: contain;
-  object-position: center;
-}
-
 .gift-card {
   position: relative;
   overflow: hidden;
@@ -553,16 +530,19 @@ h1 {
 
 .password-gate[hidden],
 .congrats-step[hidden],
+.reward-ready-step[hidden],
 .gift-content[hidden] {
   display: none;
 }
 
-.congrats-step {
+.congrats-step,
+.reward-ready-step {
   position: relative;
   z-index: 1;
 }
 
-.congrats-step .primary-action {
+.congrats-step .primary-action,
+.reward-ready-step .primary-action {
   margin-top: 24px;
 }
 
@@ -607,6 +587,20 @@ h1 {
   box-shadow:
     inset 0 0 38px rgba(214, 35, 35, 0.18),
     0 0 24px rgba(214, 35, 35, 0.16);
+}
+
+.reward-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 16px;
+  width: min(460px, 100%);
+  margin: 26px auto 0;
+}
+
+.reward-grid .code-box {
+  width: 100%;
+  margin: 0;
 }
 
 .code-box::before {

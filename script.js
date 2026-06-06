@@ -4,11 +4,13 @@ const introPlayer = document.querySelector("#intro-player");
 const menuScreen = document.querySelector("#dbd-menu");
 const playMenuButton = document.querySelector("#play-menu");
 const killerMenuButton = document.querySelector("#killer-menu");
+const sceneImage = document.querySelector(".scene-image");
 const lockerButton = document.querySelector("#open-locker");
 const modal = document.querySelector("#gift-modal");
 const closeButton = document.querySelector("#close-modal");
 const copyButton = document.querySelector("#copy-code");
 const codeValue = document.querySelector("#steam-code");
+const bonusCodeValue = document.querySelector("#bonus-code");
 const finalNote = document.querySelector("#final-note");
 const passwordGate = document.querySelector("#password-gate");
 const passwordInput = document.querySelector("#password-input");
@@ -18,12 +20,13 @@ const continuePasswordButton = document.querySelector("#continue-password");
 const finalPasswordGate = document.querySelector("#final-password-gate");
 const finalPasswordInput = document.querySelector("#final-password-input");
 const finalPasswordFeedback = document.querySelector("#final-password-feedback");
+const rewardReadyStep = document.querySelector("#reward-ready-step");
+const receiveRewardButton = document.querySelector("#receive-reward");
 const giftContent = document.querySelector("#gift-content");
 const giftCard = document.querySelector(".gift-card");
-const ghostVideoStage = document.querySelector("#ghost-video-stage");
-const ghostVideo = document.querySelector("#ghost-video");
 
 const steamCode = scene.dataset.code;
+const bonusCode = scene.dataset.bonusCode;
 const giftPassword = "ghost face";
 const finalGiftPassword = "tiffany";
 let introHidden = false;
@@ -76,17 +79,20 @@ function enterKillerScene() {
 
 function openGift() {
   modal.hidden = false;
-  ghostVideoStage.hidden = false;
-  giftCard.hidden = true;
-  passwordGate.hidden = true;
+  sceneImage.src = "assets/locker-open.png";
+  sceneImage.alt = "Armario vermelho aberto em um ambiente azul";
+  giftCard.hidden = false;
+  passwordGate.hidden = false;
   congratsStep.hidden = true;
   finalPasswordGate.hidden = true;
+  rewardReadyStep.hidden = true;
   giftContent.hidden = true;
   giftCard.classList.add("locked");
   giftCard.classList.remove("revealed");
   codeValue.textContent = "?????-?????-?????";
+  bonusCodeValue.textContent = "?????-?????-?????";
   copyButton.disabled = true;
-  copyButton.textContent = "Copiar codigo";
+  copyButton.textContent = "Copiar recompensas";
   passwordInput.value = "";
   passwordInput.placeholder = "Digite a senha";
   passwordFeedback.textContent = "";
@@ -94,20 +100,6 @@ function openGift() {
   finalPasswordInput.placeholder = "Digite a segunda senha";
   finalPasswordFeedback.textContent = "";
   lockerButton.classList.add("opened");
-  ghostVideo.currentTime = 0;
-  ghostVideo.volume = 0.35;
-  ghostVideo.muted = false;
-  ghostVideo.play().catch(() => {
-    ghostVideo.muted = true;
-    ghostVideo.play().catch(() => {});
-  });
-}
-
-function showPasswordGate() {
-  ghostVideo.pause();
-  ghostVideoStage.hidden = true;
-  giftCard.hidden = false;
-  passwordGate.hidden = false;
   passwordInput.focus();
 }
 
@@ -123,17 +115,24 @@ function showFinalPasswordGate() {
   finalPasswordInput.focus();
 }
 
+function showRewardReadyStep() {
+  finalPasswordGate.hidden = true;
+  rewardReadyStep.hidden = false;
+  receiveRewardButton.focus();
+}
+
 function closeGift() {
-  ghostVideo.pause();
   modal.hidden = true;
   lockerButton.focus();
 }
 
 function revealGift() {
   codeValue.textContent = steamCode;
+  bonusCodeValue.textContent = bonusCode;
   passwordGate.hidden = true;
   congratsStep.hidden = true;
   finalPasswordGate.hidden = true;
+  rewardReadyStep.hidden = true;
   giftContent.hidden = false;
   giftCard.classList.remove("locked");
   giftCard.classList.add("revealed");
@@ -146,8 +145,8 @@ playMenuButton.addEventListener("click", showKillerChoice);
 killerMenuButton.addEventListener("click", enterKillerScene);
 lockerButton.addEventListener("click", openGift);
 closeButton.addEventListener("click", closeGift);
-ghostVideo.addEventListener("ended", showPasswordGate);
 continuePasswordButton.addEventListener("click", showFinalPasswordGate);
+receiveRewardButton.addEventListener("click", revealGift);
 
 passwordGate.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -167,7 +166,7 @@ finalPasswordGate.addEventListener("submit", (event) => {
   event.preventDefault();
 
   if (normalizePassword(finalPasswordInput.value) === finalGiftPassword) {
-    revealGift();
+    showRewardReadyStep();
     return;
   }
 
@@ -190,11 +189,13 @@ document.addEventListener("keydown", (event) => {
 });
 
 copyButton.addEventListener("click", async () => {
+  const rewardText = `Recompensa 1: ${steamCode}\nRecompensa 2: ${bonusCode}`;
+
   try {
-    await navigator.clipboard.writeText(steamCode);
-    copyButton.textContent = "Codigo copiado";
-    finalNote.textContent = "O codigo foi copiado para a area de transferencia.";
+    await navigator.clipboard.writeText(rewardText);
+    copyButton.textContent = "Codigos copiados";
+    finalNote.textContent = "As recompensas foram copiadas para a area de transferencia.";
   } catch {
-    finalNote.textContent = "Selecione o codigo e copie manualmente.";
+    finalNote.textContent = "Selecione as recompensas e copie manualmente.";
   }
 });
