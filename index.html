@@ -21,7 +21,29 @@
       </div>
     </section>
 
-    <main class="locker-scene" data-code="COLOQUE-O-CODIGO-AQUI">
+    <section class="dbd-menu" id="dbd-menu" aria-label="Menu de jogo">
+      <div class="player-strip" aria-hidden="true">
+        <span class="currency">1 150</span>
+        <span class="currency shard">8 213</span>
+        <span class="currency blood">428 300</span>
+        <span class="player-name">XD Paladino</span>
+      </div>
+
+      <nav class="menu-panel" aria-label="Escolha de modo">
+        <button class="menu-choice play-choice" id="play-menu" type="button" aria-expanded="false">
+          <span class="choice-icon tally-mark" aria-hidden="true"></span>
+          <span>Jogar</span>
+          <span class="choice-arrow" aria-hidden="true"></span>
+        </button>
+
+        <button class="menu-choice killer-choice" id="killer-menu" type="button" hidden>
+          <span class="choice-icon skull-mark" aria-hidden="true"></span>
+          <span>Assassino</span>
+        </button>
+      </nav>
+    </section>
+
+    <main class="locker-scene" data-code="COLOQUE-O-CODIGO-AQUI" hidden>
       <img
         class="scene-image"
         src="assets/dbd-locker-background.png"

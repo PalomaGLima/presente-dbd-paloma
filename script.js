@@ -1,6 +1,9 @@
 const scene = document.querySelector(".locker-scene");
 const introOverlay = document.querySelector("#intro-video");
 const introPlayer = document.querySelector("#intro-player");
+const menuScreen = document.querySelector("#dbd-menu");
+const playMenuButton = document.querySelector("#play-menu");
+const killerMenuButton = document.querySelector("#killer-menu");
 const lockerButton = document.querySelector("#open-locker");
 const modal = document.querySelector("#gift-modal");
 const closeButton = document.querySelector("#close-modal");
@@ -52,6 +55,19 @@ function normalizePassword(value) {
   return value.trim().toLowerCase().replace(/\s+/g, " ");
 }
 
+function showKillerChoice() {
+  playMenuButton.setAttribute("aria-expanded", "true");
+  menuScreen.classList.add("expanded");
+  killerMenuButton.hidden = false;
+  killerMenuButton.focus();
+}
+
+function enterKillerScene() {
+  menuScreen.hidden = true;
+  scene.hidden = false;
+  lockerButton.focus();
+}
+
 function openGift() {
   modal.hidden = false;
   ghostVideoStage.hidden = false;
@@ -101,6 +117,8 @@ function revealGift() {
   copyButton.focus();
 }
 
+playMenuButton.addEventListener("click", showKillerChoice);
+killerMenuButton.addEventListener("click", enterKillerScene);
 lockerButton.addEventListener("click", openGift);
 closeButton.addEventListener("click", closeGift);
 ghostVideo.addEventListener("ended", showPasswordGate);
