@@ -64,11 +64,19 @@ function normalizePassword(value) {
   return value.trim().toLowerCase().replace(/\s+/g, " ");
 }
 
-function showKillerChoice() {
-  playMenuButton.setAttribute("aria-expanded", "true");
-  menuScreen.classList.add("expanded");
-  killerMenuButton.hidden = false;
-  killerMenuButton.focus();
+function toggleKillerChoice() {
+  const shouldOpen = killerMenuButton.hidden;
+
+  playMenuButton.setAttribute("aria-expanded", String(shouldOpen));
+  menuScreen.classList.toggle("expanded", shouldOpen);
+  killerMenuButton.hidden = !shouldOpen;
+
+  if (shouldOpen) {
+    killerMenuButton.focus();
+    return;
+  }
+
+  playMenuButton.focus();
 }
 
 function enterKillerScene() {
@@ -141,7 +149,7 @@ function revealGift() {
   copyButton.focus();
 }
 
-playMenuButton.addEventListener("click", showKillerChoice);
+playMenuButton.addEventListener("click", toggleKillerChoice);
 killerMenuButton.addEventListener("click", enterKillerScene);
 lockerButton.addEventListener("click", openGift);
 closeButton.addEventListener("click", closeGift);
