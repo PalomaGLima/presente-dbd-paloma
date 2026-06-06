@@ -2,7 +2,7 @@ const scene = document.querySelector(".locker-scene");
 const introOverlay = document.querySelector("#intro-video");
 const introPlayer = document.querySelector("#intro-player");
 const wrongPasswordOverlay = document.querySelector("#wrong-password-video");
-const wrongPasswordPlayer = document.querySelector("#wrong-password-player");
+const wrongPasswordImage = document.querySelector("#wrong-password-image");
 const correctPasswordOverlay = document.querySelector("#correct-password-video");
 const correctPasswordPlayer = document.querySelector("#correct-password-player");
 const menuScreen = document.querySelector("#dbd-menu");
@@ -35,6 +35,7 @@ const giftPassword = "ghost face";
 const finalGiftPassword = "tiffany";
 let introHidden = false;
 let wrongPasswordFocusTarget = null;
+let wrongPasswordTimer = null;
 
 function hideIntro() {
   if (introHidden) {
@@ -70,7 +71,7 @@ function normalizePassword(value) {
 }
 
 function hideWrongPasswordVideo() {
-  wrongPasswordPlayer.pause();
+  clearTimeout(wrongPasswordTimer);
   wrongPasswordOverlay.hidden = true;
 
   if (wrongPasswordFocusTarget) {
@@ -80,11 +81,11 @@ function hideWrongPasswordVideo() {
 
 function showWrongPasswordVideo(focusTarget) {
   wrongPasswordFocusTarget = focusTarget;
+  clearTimeout(wrongPasswordTimer);
+  wrongPasswordImage.src = "";
+  wrongPasswordImage.src = "assets/wesker-wrong-password.gif";
   wrongPasswordOverlay.hidden = false;
-  wrongPasswordPlayer.currentTime = 0;
-  wrongPasswordPlayer.muted = false;
-  wrongPasswordPlayer.volume = 1;
-  wrongPasswordPlayer.play().catch(hideWrongPasswordVideo);
+  wrongPasswordTimer = setTimeout(hideWrongPasswordVideo, 3200);
 }
 
 function hideCorrectPasswordVideo() {
@@ -221,8 +222,6 @@ finalPasswordGate.addEventListener("submit", (event) => {
   showWrongPasswordVideo(finalPasswordInput);
 });
 
-wrongPasswordPlayer.addEventListener("ended", hideWrongPasswordVideo);
-wrongPasswordPlayer.addEventListener("error", hideWrongPasswordVideo);
 correctPasswordPlayer.addEventListener("ended", hideCorrectPasswordVideo);
 correctPasswordPlayer.addEventListener("error", hideCorrectPasswordVideo);
 

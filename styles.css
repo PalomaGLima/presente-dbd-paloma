@@ -109,7 +109,7 @@ button {
   display: none;
 }
 
-.wrong-password-video video,
+.wrong-password-video img,
 .correct-password-video video {
   width: 100%;
   height: 100%;
