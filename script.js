@@ -13,6 +13,8 @@ const playMenuButton = document.querySelector("#play-menu");
 const killerMenuButton = document.querySelector("#killer-menu");
 const assassinMenuButton = document.querySelector("#assassin-menu");
 const killerMenuLabel = killerMenuButton.querySelector("span");
+const assassinScreen = document.querySelector("#assassin-screen");
+const backToMenuButton = document.querySelector("#back-to-menu");
 const sceneImage = document.querySelector(".scene-image");
 const lockerButton = document.querySelector("#open-locker");
 const modal = document.querySelector("#gift-modal");
@@ -143,6 +145,18 @@ function enterKillerScene() {
   lockerButton.focus();
 }
 
+function enterAssassinScreen() {
+  menuScreen.hidden = true;
+  assassinScreen.hidden = false;
+  backToMenuButton.focus();
+}
+
+function returnToMenu() {
+  assassinScreen.hidden = true;
+  menuScreen.hidden = false;
+  playMenuButton.focus();
+}
+
 function openGift() {
   modal.hidden = false;
   sceneImage.src = "assets/locker-open.png";
@@ -212,7 +226,8 @@ function revealGift() {
 
 playMenuButton.addEventListener("click", toggleKillerChoice);
 killerMenuButton.addEventListener("click", enterKillerScene);
-assassinMenuButton.addEventListener("click", enterKillerScene);
+assassinMenuButton.addEventListener("click", enterAssassinScreen);
+backToMenuButton.addEventListener("click", returnToMenu);
 lockerButton.addEventListener("click", openGift);
 closeButton.addEventListener("click", closeGift);
 continuePasswordButton.addEventListener("click", showFinalPasswordGate);

@@ -143,6 +143,126 @@ button {
   display: none;
 }
 
+.assassin-screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.2) 48%, rgba(0, 0, 0, 0.48)),
+    radial-gradient(circle at 53% 62%, rgba(255, 93, 42, 0.2), transparent 16%),
+    url("assets/dbd-menu-background-new.png") center / cover no-repeat,
+    #070a0c;
+}
+
+.assassin-screen[hidden] {
+  display: none;
+}
+
+.assassin-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.48)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 12px);
+}
+
+.back-menu-button {
+  position: absolute;
+  z-index: 2;
+  left: clamp(18px, 5vw, 64px);
+  top: clamp(22px, 4vw, 42px);
+  min-height: 48px;
+  min-width: 126px;
+  padding: 0 20px;
+  border: 1px solid rgba(241, 232, 220, 0.2);
+  border-radius: 4px;
+  color: var(--bone);
+  background: linear-gradient(90deg, rgba(2, 4, 5, 0.92), rgba(7, 9, 10, 0.72));
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.assassin-panel {
+  position: absolute;
+  z-index: 1;
+  left: clamp(18px, 7vw, 110px);
+  top: 50%;
+  width: min(460px, calc(100vw - 36px));
+  transform: translateY(-50%);
+}
+
+.assassin-panel h1 {
+  margin-bottom: 28px;
+  font-family: "Trebuchet MS", system-ui, sans-serif;
+  font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+  text-transform: uppercase;
+}
+
+.assassin-list {
+  display: grid;
+  gap: 10px;
+}
+
+.assassin-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  align-items: center;
+  min-height: 78px;
+  color: rgba(241, 232, 220, 0.78);
+  background: linear-gradient(90deg, rgba(2, 4, 5, 0.96), rgba(7, 9, 10, 0.78));
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    inset 74px 0 0 rgba(0, 0, 0, 0.34);
+  cursor: pointer;
+  font-size: clamp(0.92rem, 1.8vw, 1.06rem);
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  text-align: left;
+  text-transform: uppercase;
+  transition: transform 180ms ease, color 180ms ease, background 180ms ease;
+}
+
+.assassin-card:hover,
+.assassin-card:focus-visible,
+.back-menu-button:hover,
+.back-menu-button:focus-visible {
+  transform: translateX(6px);
+  color: #fff7ef;
+  outline: none;
+  background: linear-gradient(90deg, rgba(18, 21, 22, 0.98), rgba(8, 10, 11, 0.9));
+}
+
+.assassin-mark {
+  width: 34px;
+  height: 34px;
+  margin-left: 22px;
+  border: 2px solid rgba(241, 232, 220, 0.72);
+  transform: rotate(45deg);
+  box-shadow: 0 0 14px rgba(241, 232, 220, 0.12);
+}
+
+.assassin-mark::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: 9px;
+  border-radius: 999px;
+  background: rgba(241, 232, 220, 0.74);
+}
+
 .menu-panel {
   position: absolute;
   z-index: 1;
@@ -863,6 +983,35 @@ h1 {
 @media (max-width: 700px) {
   .menu-panel {
     top: 72px;
+  }
+
+  .back-menu-button {
+    top: 18px;
+    left: 18px;
+  }
+
+  .assassin-panel {
+    left: 18px;
+    top: 54%;
+  }
+
+  .assassin-card {
+    grid-template-columns: 60px 1fr;
+    min-height: 64px;
+    box-shadow:
+      0 12px 26px rgba(0, 0, 0, 0.48),
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      inset 60px 0 0 rgba(0, 0, 0, 0.34);
+  }
+
+  .assassin-mark {
+    width: 30px;
+    height: 30px;
+    margin-left: 16px;
+  }
+
+  .assassin-mark::before {
+    margin: 7px;
   }
 
   .menu-choice {
