@@ -244,6 +244,10 @@ button {
   background: url("assets/poste-mayer-screen.png") center / cover no-repeat #070a0c;
 }
 
+.beauty-face-screen {
+  background: url("assets/beauty-face-screen.png") center / cover no-repeat #070a0c;
+}
+
 .character-back-hotspot {
   position: absolute;
   z-index: 2;
