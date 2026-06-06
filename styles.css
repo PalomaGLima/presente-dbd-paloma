@@ -227,6 +227,7 @@ button {
 }
 
 .choice-icon {
+  display: block;
   width: 44px;
   height: 44px;
   margin-left: 16px;
@@ -252,22 +253,9 @@ button {
   transform: rotate(-16deg);
 }
 
-.skull-mark {
-  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-}
-
-.skull-mark::before {
-  content: "";
-  display: block;
-  width: 18px;
-  height: 18px;
-  margin: 12px auto 0;
-  border-radius: 50% 50% 42% 42%;
-  background: rgba(241, 232, 220, 0.82);
-  box-shadow:
-    -6px 9px 0 -4px rgba(0, 0, 0, 0.82),
-    6px 9px 0 -4px rgba(0, 0, 0, 0.82),
-    0 18px 0 -6px rgba(241, 232, 220, 0.82);
+.killer-icon {
+  object-fit: contain;
+  background: transparent;
 }
 
 .choice-arrow {
