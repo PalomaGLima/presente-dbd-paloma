@@ -15,6 +15,3 @@ No arquivo `index.html`, altere o valor de `data-code`:
 
 Depois publique novamente para atualizar o link.
 
-## Senha
-
-A senha simples do presente e `Ghost Face`.
