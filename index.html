@@ -41,10 +41,13 @@
           <video
             class="ghost-video"
             id="ghost-video"
-            src="assets/ghost-armario.mp4"
-            preload="metadata"
+            autoplay
             playsinline
-          ></video>
+            preload="auto"
+            muted
+          >
+            <source src="assets/ghost-armario.mp4" type="video/mp4" />
+          </video>
         </div>
 
         <div class="gift-card locked" id="gift-card" hidden>

@@ -57,7 +57,11 @@ function openGift() {
   passwordFeedback.textContent = "";
   lockerButton.classList.add("opened");
   ghostVideo.currentTime = 0;
-  ghostVideo.play().catch(showPasswordGate);
+  ghostVideo.muted = false;
+  ghostVideo.play().catch(() => {
+    ghostVideo.muted = true;
+    ghostVideo.play().catch(() => {});
+  });
 }
 
 function showPasswordGate() {
