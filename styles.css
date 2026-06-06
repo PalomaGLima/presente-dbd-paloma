@@ -223,6 +223,45 @@ button {
   height: 5.8%;
 }
 
+.character-screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #070a0c;
+}
+
+.character-screen[hidden] {
+  display: none;
+}
+
+.pampandora-screen {
+  background: url("assets/pampandora-screen.png") center / cover no-repeat #070a0c;
+}
+
+.character-back-hotspot {
+  position: absolute;
+  z-index: 2;
+  left: 4.2%;
+  bottom: 3.2%;
+  width: 8.5%;
+  height: 5.4%;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  transition: background 160ms ease, box-shadow 160ms ease;
+}
+
+.character-back-hotspot:hover,
+.character-back-hotspot:focus-visible {
+  outline: 3px solid rgba(255, 80, 56, 0.88);
+  outline-offset: 5px;
+  background: rgba(214, 35, 35, 0.08);
+  box-shadow: 0 0 34px rgba(214, 35, 35, 0.48);
+}
+
 .back-menu-button {
   position: absolute;
   z-index: 2;

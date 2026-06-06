@@ -16,6 +16,8 @@ const killerMenuLabel = killerMenuButton.querySelector("span");
 const assassinScreen = document.querySelector("#assassin-screen");
 const backToMenuButton = document.querySelector("#back-to-menu");
 const assassinCardButtons = document.querySelectorAll(".assassin-card-hotspot");
+const pampandoraScreen = document.querySelector("#pampandora-screen");
+const backToAssassinsButton = document.querySelector("#back-to-assassins");
 const sceneImage = document.querySelector(".scene-image");
 const lockerButton = document.querySelector("#open-locker");
 const backFromRewardButton = document.querySelector("#back-from-reward");
@@ -155,8 +157,21 @@ function enterAssassinScreen() {
 
 function returnToMenu() {
   assassinScreen.hidden = true;
+  pampandoraScreen.hidden = true;
   menuScreen.hidden = false;
   playMenuButton.focus();
+}
+
+function enterPampandoraScreen() {
+  assassinScreen.hidden = true;
+  pampandoraScreen.hidden = false;
+  backToAssassinsButton.focus();
+}
+
+function returnToAssassinScreen() {
+  pampandoraScreen.hidden = true;
+  assassinScreen.hidden = false;
+  document.querySelector(".assassin-card-1").focus();
 }
 
 function returnFromRewardToMenu() {
@@ -240,6 +255,7 @@ playMenuButton.addEventListener("click", toggleKillerChoice);
 killerMenuButton.addEventListener("click", enterKillerScene);
 assassinMenuButton.addEventListener("click", enterAssassinScreen);
 backToMenuButton.addEventListener("click", returnToMenu);
+backToAssassinsButton.addEventListener("click", returnToAssassinScreen);
 backFromRewardButton.addEventListener("click", returnFromRewardToMenu);
 lockerButton.addEventListener("click", openGift);
 closeButton.addEventListener("click", closeGift);
@@ -254,6 +270,10 @@ assassinCardButtons.forEach((button) => {
 
     button.classList.add("selected");
     button.setAttribute("aria-pressed", "true");
+
+    if (button.classList.contains("assassin-card-1")) {
+      enterPampandoraScreen();
+    }
   });
 });
 
