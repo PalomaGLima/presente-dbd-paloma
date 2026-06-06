@@ -252,6 +252,10 @@ button {
   background: url("assets/bibiffany-screen.png") center / cover no-repeat #070a0c;
 }
 
+.laritronica-screen {
+  background: url("assets/laritronica-screen.png") center / cover no-repeat #070a0c;
+}
+
 .character-back-hotspot {
   position: absolute;
   z-index: 2;

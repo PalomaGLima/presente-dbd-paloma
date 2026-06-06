@@ -20,10 +20,12 @@ const pampandoraScreen = document.querySelector("#pampandora-screen");
 const posteMayerScreen = document.querySelector("#poste-mayer-screen");
 const beautyFaceScreen = document.querySelector("#beauty-face-screen");
 const bibiffanyScreen = document.querySelector("#bibiffany-screen");
+const laritronicaScreen = document.querySelector("#laritronica-screen");
 const backToAssassinsButton = document.querySelector("#back-to-assassins");
 const backToAssassinsPosteButton = document.querySelector("#back-to-assassins-poste");
 const backToAssassinsBeautyButton = document.querySelector("#back-to-assassins-beauty");
 const backToAssassinsBibiffanyButton = document.querySelector("#back-to-assassins-bibiffany");
+const backToAssassinsLaritronicaButton = document.querySelector("#back-to-assassins-laritronica");
 const characterScreens = document.querySelectorAll(".character-screen");
 const sceneImage = document.querySelector(".scene-image");
 const lockerButton = document.querySelector("#open-locker");
@@ -272,6 +274,7 @@ backToAssassinsButton.addEventListener("click", () => returnToAssassinScreen(".a
 backToAssassinsPosteButton.addEventListener("click", () => returnToAssassinScreen(".assassin-card-2"));
 backToAssassinsBeautyButton.addEventListener("click", () => returnToAssassinScreen(".assassin-card-3"));
 backToAssassinsBibiffanyButton.addEventListener("click", () => returnToAssassinScreen(".assassin-card-4"));
+backToAssassinsLaritronicaButton.addEventListener("click", () => returnToAssassinScreen(".assassin-card-5"));
 backFromRewardButton.addEventListener("click", returnFromRewardToMenu);
 lockerButton.addEventListener("click", openGift);
 closeButton.addEventListener("click", closeGift);
@@ -301,6 +304,10 @@ assassinCardButtons.forEach((button) => {
 
     if (button.classList.contains("assassin-card-4")) {
       enterCharacterScreen(bibiffanyScreen);
+    }
+
+    if (button.classList.contains("assassin-card-5")) {
+      enterCharacterScreen(laritronicaScreen);
     }
   });
 });
