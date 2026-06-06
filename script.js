@@ -17,7 +17,10 @@ const assassinScreen = document.querySelector("#assassin-screen");
 const backToMenuButton = document.querySelector("#back-to-menu");
 const assassinCardButtons = document.querySelectorAll(".assassin-card-hotspot");
 const pampandoraScreen = document.querySelector("#pampandora-screen");
+const posteMayerScreen = document.querySelector("#poste-mayer-screen");
 const backToAssassinsButton = document.querySelector("#back-to-assassins");
+const backToAssassinsPosteButton = document.querySelector("#back-to-assassins-poste");
+const characterScreens = document.querySelectorAll(".character-screen");
 const sceneImage = document.querySelector(".scene-image");
 const lockerButton = document.querySelector("#open-locker");
 const backFromRewardButton = document.querySelector("#back-from-reward");
@@ -157,21 +160,27 @@ function enterAssassinScreen() {
 
 function returnToMenu() {
   assassinScreen.hidden = true;
-  pampandoraScreen.hidden = true;
+  characterScreens.forEach((screen) => {
+    screen.hidden = true;
+  });
   menuScreen.hidden = false;
   playMenuButton.focus();
 }
 
-function enterPampandoraScreen() {
+function enterCharacterScreen(screen) {
   assassinScreen.hidden = true;
-  pampandoraScreen.hidden = false;
-  backToAssassinsButton.focus();
+  characterScreens.forEach((characterScreen) => {
+    characterScreen.hidden = characterScreen !== screen;
+  });
+  screen.querySelector(".character-back-hotspot").focus();
 }
 
-function returnToAssassinScreen() {
-  pampandoraScreen.hidden = true;
+function returnToAssassinScreen(focusTarget = ".assassin-card-1") {
+  characterScreens.forEach((screen) => {
+    screen.hidden = true;
+  });
   assassinScreen.hidden = false;
-  document.querySelector(".assassin-card-1").focus();
+  document.querySelector(focusTarget).focus();
 }
 
 function returnFromRewardToMenu() {
@@ -255,7 +264,8 @@ playMenuButton.addEventListener("click", toggleKillerChoice);
 killerMenuButton.addEventListener("click", enterKillerScene);
 assassinMenuButton.addEventListener("click", enterAssassinScreen);
 backToMenuButton.addEventListener("click", returnToMenu);
-backToAssassinsButton.addEventListener("click", returnToAssassinScreen);
+backToAssassinsButton.addEventListener("click", () => returnToAssassinScreen(".assassin-card-1"));
+backToAssassinsPosteButton.addEventListener("click", () => returnToAssassinScreen(".assassin-card-2"));
 backFromRewardButton.addEventListener("click", returnFromRewardToMenu);
 lockerButton.addEventListener("click", openGift);
 closeButton.addEventListener("click", closeGift);
@@ -272,7 +282,11 @@ assassinCardButtons.forEach((button) => {
     button.setAttribute("aria-pressed", "true");
 
     if (button.classList.contains("assassin-card-1")) {
-      enterPampandoraScreen();
+      enterCharacterScreen(pampandoraScreen);
+    }
+
+    if (button.classList.contains("assassin-card-2")) {
+      enterCharacterScreen(posteMayerScreen);
     }
   });
 });
