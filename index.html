@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <section class="intro-video" id="intro-video" aria-label="Introducao em video">
+      <video
+        id="intro-player"
+        autoplay
+        muted
+        playsinline
+        preload="auto"
+      >
+        <source src="assets/dbd-intro.mp4" type="video/mp4" />
+      </video>
+      <button class="skip-intro" id="skip-intro" type="button">
+        Pular
+      </button>
+    </section>
+
     <main class="locker-scene" data-code="COLOQUE-O-CODIGO-AQUI">
       <img
         class="scene-image"

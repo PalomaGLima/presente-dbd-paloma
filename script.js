@@ -1,4 +1,7 @@
 const scene = document.querySelector(".locker-scene");
+const introOverlay = document.querySelector("#intro-video");
+const introPlayer = document.querySelector("#intro-player");
+const skipIntroButton = document.querySelector("#skip-intro");
 const lockerButton = document.querySelector("#open-locker");
 const modal = document.querySelector("#gift-modal");
 const closeButton = document.querySelector("#close-modal");
@@ -13,6 +16,24 @@ const giftCard = document.querySelector(".gift-card");
 
 const steamCode = scene.dataset.code;
 const giftPassword = "ghost face";
+let introHidden = false;
+
+function hideIntro() {
+  if (introHidden) {
+    return;
+  }
+
+  introHidden = true;
+  introOverlay.classList.add("hidden");
+  introPlayer.pause();
+}
+
+introPlayer.addEventListener("ended", hideIntro);
+skipIntroButton.addEventListener("click", hideIntro);
+
+introPlayer.play().catch(() => {
+  skipIntroButton.textContent = "Entrar";
+});
 
 function normalizePassword(value) {
   return value.trim().toLowerCase().replace(/\s+/g, " ");
