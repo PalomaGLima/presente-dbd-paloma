@@ -7,7 +7,7 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <title>Presente no Armario</title>
-    <link rel="stylesheet" href="styles.css?v=20260606-5" />
+    <link rel="stylesheet" href="styles.css?v=20260606-6" />
   </head>
   <body>
     <section class="intro-video" id="intro-video" aria-label="Introducao em video">
@@ -28,13 +28,6 @@
     </section>
 
     <section class="dbd-menu" id="dbd-menu" aria-label="Menu de jogo">
-      <div class="player-strip" aria-hidden="true">
-        <span class="currency">1 150</span>
-        <span class="currency shard">8 213</span>
-        <span class="currency blood">428 300</span>
-        <span class="player-name">XD Paladino</span>
-      </div>
-
       <nav class="menu-panel" aria-label="Escolha de modo">
         <button class="menu-choice play-choice" id="play-menu" type="button" aria-expanded="false">
           <img
@@ -55,6 +48,16 @@
             aria-hidden="true"
           />
           <span>Recompensa</span>
+        </button>
+
+        <button class="menu-choice killer-choice assassin-choice" id="assassin-menu" type="button" hidden>
+          <img
+            class="choice-icon killer-icon"
+            src="assets/IconHelpLoading_killer.webp"
+            alt=""
+            aria-hidden="true"
+          />
+          <span>Assassinos</span>
         </button>
       </nav>
     </section>
@@ -200,6 +203,6 @@
       </video>
     </section>
 
-    <script src="script.js?v=20260606-5"></script>
+    <script src="script.js?v=20260606-6"></script>
   </body>
 </html>

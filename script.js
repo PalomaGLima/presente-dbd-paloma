@@ -11,6 +11,7 @@ const secondPasswordPlayer = document.querySelector("#second-password-player");
 const menuScreen = document.querySelector("#dbd-menu");
 const playMenuButton = document.querySelector("#play-menu");
 const killerMenuButton = document.querySelector("#killer-menu");
+const assassinMenuButton = document.querySelector("#assassin-menu");
 const killerMenuLabel = killerMenuButton.querySelector("span");
 const sceneImage = document.querySelector(".scene-image");
 const lockerButton = document.querySelector("#open-locker");
@@ -126,6 +127,7 @@ function toggleKillerChoice() {
   playMenuButton.setAttribute("aria-expanded", String(shouldOpen));
   menuScreen.classList.toggle("expanded", shouldOpen);
   killerMenuButton.hidden = !shouldOpen;
+  assassinMenuButton.hidden = !shouldOpen;
 
   if (shouldOpen) {
     killerMenuButton.focus();
@@ -210,6 +212,7 @@ function revealGift() {
 
 playMenuButton.addEventListener("click", toggleKillerChoice);
 killerMenuButton.addEventListener("click", enterKillerScene);
+assassinMenuButton.addEventListener("click", enterKillerScene);
 lockerButton.addEventListener("click", openGift);
 closeButton.addEventListener("click", closeGift);
 continuePasswordButton.addEventListener("click", showFinalPasswordGate);
