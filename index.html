@@ -36,8 +36,18 @@
         aria-label="Abrir a maçaneta marcada e revelar presente"
       ></button>
 
-      <section class="gift-modal" id="gift-modal" aria-labelledby="gift-title" hidden>
-        <div class="gift-card locked">
+      <section class="gift-modal" id="gift-modal" aria-label="Presente no armario" hidden>
+        <div class="ghost-video-stage" id="ghost-video-stage" hidden>
+          <video
+            class="ghost-video"
+            id="ghost-video"
+            src="assets/ghost-armario.mp4"
+            preload="metadata"
+            playsinline
+          ></video>
+        </div>
+
+        <div class="gift-card locked" id="gift-card" hidden>
           <form class="password-gate" id="password-gate">
             <div class="password-row">
               <input

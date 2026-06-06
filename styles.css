@@ -186,6 +186,31 @@ button {
   display: none;
 }
 
+.ghost-video-stage {
+  position: relative;
+  width: min(860px, 100%);
+  overflow: hidden;
+  border: 1px solid rgba(255, 80, 56, 0.38);
+  border-radius: 8px;
+  background: #020303;
+  box-shadow:
+    0 28px 90px var(--shadow),
+    0 0 42px rgba(214, 35, 35, 0.18);
+}
+
+.ghost-video-stage[hidden] {
+  display: none;
+}
+
+.ghost-video {
+  display: block;
+  width: 100%;
+  max-height: calc(100svh - 48px);
+  aspect-ratio: 16 / 9;
+  background: #020303;
+  object-fit: contain;
+}
+
 .gift-card {
   position: relative;
   overflow: hidden;
@@ -205,6 +230,10 @@ button {
     inset 0 0 0 1px rgba(0, 0, 0, 0.64);
   text-align: center;
   animation: lockerOpen 360ms ease-out;
+}
+
+.gift-card[hidden] {
+  display: none;
 }
 
 .gift-card::before,

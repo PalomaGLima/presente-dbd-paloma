@@ -13,6 +13,8 @@ const passwordInput = document.querySelector("#password-input");
 const passwordFeedback = document.querySelector("#password-feedback");
 const giftContent = document.querySelector("#gift-content");
 const giftCard = document.querySelector(".gift-card");
+const ghostVideoStage = document.querySelector("#ghost-video-stage");
+const ghostVideo = document.querySelector("#ghost-video");
 
 const steamCode = scene.dataset.code;
 const giftPassword = "ghost face";
@@ -41,7 +43,9 @@ function normalizePassword(value) {
 
 function openGift() {
   modal.hidden = false;
-  passwordGate.hidden = false;
+  ghostVideoStage.hidden = false;
+  giftCard.hidden = true;
+  passwordGate.hidden = true;
   giftContent.hidden = true;
   giftCard.classList.add("locked");
   giftCard.classList.remove("revealed");
@@ -52,10 +56,20 @@ function openGift() {
   passwordInput.placeholder = "Digite a senha";
   passwordFeedback.textContent = "";
   lockerButton.classList.add("opened");
+  ghostVideo.currentTime = 0;
+  ghostVideo.play().catch(showPasswordGate);
+}
+
+function showPasswordGate() {
+  ghostVideo.pause();
+  ghostVideoStage.hidden = true;
+  giftCard.hidden = false;
+  passwordGate.hidden = false;
   passwordInput.focus();
 }
 
 function closeGift() {
+  ghostVideo.pause();
   modal.hidden = true;
   lockerButton.focus();
 }
@@ -73,6 +87,7 @@ function revealGift() {
 
 lockerButton.addEventListener("click", openGift);
 closeButton.addEventListener("click", closeGift);
+ghostVideo.addEventListener("ended", showPasswordGate);
 
 passwordGate.addEventListener("submit", (event) => {
   event.preventDefault();
