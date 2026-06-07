@@ -935,13 +935,11 @@ h1 {
   padding: 34px 22px 26px;
 }
 
-.reward-character-image {
+.reward-character-image,
+.reward-keyart {
   position: relative;
   z-index: 1;
   display: block;
-  width: min(210px, 48%);
-  max-height: 220px;
-  margin: 8px auto 0;
   border: 1px solid rgba(255, 80, 56, 0.58);
   border-radius: 6px;
   object-fit: cover;
@@ -950,6 +948,18 @@ h1 {
     0 16px 34px rgba(0, 0, 0, 0.48),
     0 0 26px rgba(214, 35, 35, 0.18),
     inset 0 0 0 1px rgba(0, 0, 0, 0.58);
+}
+
+.reward-character-image {
+  width: min(210px, 48%);
+  max-height: 220px;
+  margin: 8px auto 0;
+}
+
+.reward-keyart {
+  width: min(360px, 100%);
+  aspect-ratio: 16 / 9;
+  margin: 18px auto 0;
 }
 
 .reward-board-actions {
